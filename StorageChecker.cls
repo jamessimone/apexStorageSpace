@@ -21,7 +21,7 @@ public virtual class StorageChecker {
     public virtual StorageSpace getSpace() {
         Integer storageIndex = this.html.indexOf(dataTableHeader);
          if(storageIndex == -1) {
-            throw new Exceptions.InvalidOperationException(EX_MESSAGE);
+            throw new StorageCheckOperationException(EX_MESSAGE);
         }
 
         return this.getStorageSpace(storageIndex);
@@ -72,6 +72,8 @@ public virtual class StorageChecker {
 
         return val;
     }
+
+    public class StorageCheckOperationException extends Exception {}
 
     public class StorageSpace {
         public Decimal AvailableGB { get; set; }
